@@ -1,0 +1,80 @@
+.portfolio-sec {
+  position: relative;
+  width: calc(100% - 320px);
+  min-height: 100vh;
+  margin-left: 320px;
+  background: #000;
+  @include res(xl) {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
+  @include res(m) {
+    width: calc(100% - 260px);
+    margin-left: 260px;
+  }
+}
+
+.portfolio {}
+
+.portfolio__item {
+  position: relative;
+  display: block;
+  width: 25%;
+  padding: 4px;
+  text-align: center;
+  color: #fff;
+  @include res(l) {
+    width: 33.33333%;
+  }
+  @include res(m) {
+    width: 50%;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+    p {
+      opacity: 1;
+      transform: translate3d(-50%,-50%,0);
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: transparentize(#000, 0.2);
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    padding-left: $pad-xxs;
+    padding-right: $pad-xxs;
+    font-size: 18px;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transform: translate3d(-50%,50%,0);
+    z-index: 2;
+    @include res(xl) {
+      font-size: 16px;
+    }
+  }
+  span {
+    display: block;
+    font-size: 20px;
+    @include res(xl) {
+      font-size: 18px;
+    }
+  }
+}
