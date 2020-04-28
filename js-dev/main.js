@@ -1,6 +1,6 @@
 /***********************
  отправка формы в php BEGIN
-***********************/
+ ***********************/
 $(document).ready(function(){
 
 	$(".ajax-form").on("submit", function(event) {
@@ -50,7 +50,8 @@ $(document).ready(function(){
 				processData: false,
 				data: form_data,
 				success: (function(result) {
-					console.log(result);
+					var result_from_server = JSON.parse(result);
+					console.log(result_from_server);
 					$.fancybox.close();
 					$.fancybox.open({src  : '#modal-thanks'});
 					setTimeout(function() {$.fancybox.close();},4500);
@@ -62,19 +63,29 @@ $(document).ready(function(){
 });
 /***********************
  отправка формы в php END
-***********************/
+ ***********************/
 
 
 /***********************
 Input mask BEGIN
-***********************/
+ ***********************/
 $(function($){
 	$("input[type='tel']").mask("+7 (999) 999-99-99");
 });
 /***********************
 Input mask END
-***********************/
+ ***********************/
 
+$(function($){
+	//init Masonry
+	var $grid = $('.portfolio').masonry({
+		itemSelector: '.portfolio__item'
+	});
+	// layout Masonry after each image loads
+	$grid.imagesLoaded().progress( function() {
+		$grid.masonry('layout');
+	});
+});
 
 /***********************
  fancybox BEGIN
@@ -158,7 +169,7 @@ $(document).ready(function(){
 
 /***********************
 Custom scrollbars BEGIN
-***********************/
+ ***********************/
 $(document).ready(function(){
 	$(".scroll").mCustomScrollbar({
 		axis:"y",
@@ -168,4 +179,4 @@ $(document).ready(function(){
 });
 /***********************
 Custom scrollbars END
-***********************/
+ ***********************/
